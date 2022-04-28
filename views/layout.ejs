@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title><%=((typeof titulo === "undefined" || !titulo) ? "Clínica Mercosul" : (titulo + " - Clínica Mercosul")) %></title>
+
+	<!--
+		Bootstrap 4
+
+		https://getbootstrap.com/docs/4.0/getting-started/introduction/
+		https://getbootstrap.com/docs/4.0/getting-started/download/
+	-->
+	<link rel="stylesheet" href="/public/lib/bootstrap-4.6.1/css/bootstrap.min.css" />
+
+	<!--
+		DataTables
+
+		https://datatables.net/
+		https://datatables.net/download/index
+		https://datatables.net/examples/index
+		https://datatables.net/manual/
+	-->
+	<link rel="stylesheet" type="text/css" href="/public/lib/datatables-1.11.5/datatables.min.css" />
+
+	<link rel="stylesheet" href="/public/css/style.css" />
+
+	<!--
+		jQuery
+
+		jQuery API
+		https://api.jquery.com/
+	-->
+	<script src="/public/lib/jquery/jquery-3.6.0.min.js"></script>
+
+	<!--
+		Bootstrap 4
+
+		https://getbootstrap.com/docs/4.0/getting-started/introduction/
+		https://getbootstrap.com/docs/4.0/getting-started/download/
+	-->
+	<script src="/public/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+
+	<!--
+		DataTables
+
+		https://datatables.net/
+		https://datatables.net/download/index
+		https://datatables.net/examples/index
+		https://datatables.net/manual/
+	-->
+	<script src="/public/lib/datatables-1.11.5/datatables.min.js"></script>
+</head>
+<body>
+
+	<%- body %>
+
+</body>
+</html>

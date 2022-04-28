@@ -1,0 +1,21 @@
+EJS
+https://ejs.co/
+
+EJS Layouts
+https://www.npmjs.com/package/express-ejs-layouts
+
+Extensão do VS Code para EJS
+EJS language support
+
+jQuery API
+https://api.jquery.com/
+
+Bootstrap 4
+https://getbootstrap.com/docs/4.0/getting-started/introduction/
+https://getbootstrap.com/docs/4.0/getting-started/download/
+
+DataTables
+https://datatables.net/
+https://datatables.net/download/index
+https://datatables.net/examples/index
+https://datatables.net/manual/
