@@ -1,119 +1,92 @@
-<div>
-	<label for="PaciNom">Nome</label>
-	<input type="text" id="PaciNom" name="PaciNom" maxlength="50" />
-</div>
+<form id="form">
+	<div class="form-group">
+		<label for="PaciNom">Nome</label>
+		<input class="form-control" type="text" id="PaciNom" name="PaciNom" maxlength="50" />
+	</div>
 
-<div>
-	<label for="PaciNum">Numero de telefone</label>
-	<input type="text" id="PaciNum" name="PaciNum" maxlength="50" />
-</div>
+	<div>
+		<label for="PaciNum">Numero de telefone</label>
+		<input type="text" id="PaciNum" name="PaciNum" maxlength="15" />
+	</div>
 
-<div>
-	<label for="PaciCPF">CPF</label>
-	<input type="text" id="PaciCPF" name="PaciCPF" maxlength="50" />
-</div>
+	<div>
+		<label for="PaciCPF">CPF</label>
+		<input type="text" id="PaciCPF" name="PaciCPF" maxlength="50" />
+	</div>
 
-<div>
-	<label for="PaciEnd">Endereço</label>
-	<input type="text" id="PaciEnd" name="PaciEnd" maxlength="50" />
-</div>
+	<div>
+		<label for="PaciEnd">Endereço</label>
+		<input type="text" id="PaciEnd" name="PaciEnd" maxlength="50" />
+	</div>
 
-<div>
-	<label for="PaciEma">E-mail</label>
-	<input type="email" id="PaciEma" name="PaciEma" maxlength="50" />
-</div>
+	<div>
+		<label for="PaciEma">E-mail</label>
+		<input type="email" id="PaciEma" name="PaciEma" maxlength="50" />
+	</div>
 
-<div>
-	<label for="PaciCon">Convênio</label>
-	<input type="text" id="PaciCon" name="PaciCon" maxlength="50" />
-</div>
+	<div>
+		<label for="PaciCon">Convênio</label>
+		<input type="text" id="PaciCon" name="PaciCon" maxlength="50" />
+	</div>
 
-<div>
-	<button type="button" id="buttonCriar">Criar Pessoa</button>
-</div>
+	<div>
+		<button type="submit" class="btn btn-success">Criar Pessoa</button>
+	</div>
+</form>
 
 <script type="text/javascript">
+	$("#PaciCPF").mask("000.000.000-00");
+	maskMobilePhone("#PaciNum");
 
-	let nome = document.getElementById("PaciNom");
-	let num = document.getElementById("PaciNum");
-	let cpf = document.getElementById("PaciCPF");
-	let end = document.getElementById("PaciEnd");
-	let email = document.getElementById("PaciEma");
-	let con = document.getElementById("PaciCon");
+	$("#form").validate({
+		rules: {
+			// Aqui o que vale é o name, não o id!
+			PaciNom: {
+				required: true
+			},
+			PaciNum: {
+				required: true,
+				minlength: 14
+			},
+			PaciCPF: {
+				required: true,
+				cpf: true
+			},
+			PaciEnd: {
+				required: true
+			},
+			PaciEma: {
+				required: true
+			},
+			PaciCon: {
+				required: false
+			}
+		},
 
+		submitHandler: function (form) {
+			criarPessoa(form);
+		}
+	});
 
-	let buttonCriar = document.getElementById("buttonCriar");
-
-	async function criarPessoa() {
+	async function criarPessoa(form) {
 		try {
-			if (!nome.value) {
-				alert("O nome é obrigatório");
-				return;
-			}
-
-			if (!num.value) {
-				alert("O número é obrigatório");
-				return;
-			}
-
-			if (!cpf.value) {
-				alert("O cpf é obrigatório");
-				return;
-			}
-
-			if (!end.value) {
-				alert("O endereço é obrigatório");
-				return;
-			}
-			if (!email.value) {
-				alert("O e-mail é obrigatório");
-				return;
-			}
-
-
-			// Cria um objeto com os valores que serão enviados para o servidor.
-			let dadosParaEnvio = {
-				PaciNom: nome.value,
-				PaciEma: email.value,
-				PaciCPF: cpf.value,
-				PaciEnd: end.value,
-				PaciCon: con.value,
-				PaciNum: num.value
-			};
-
 			let opcoes = {
 				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify(dadosParaEnvio)
+				body: new FormData(form)
 			};
 
-			try {
-				let response = await fetch("/api/pessoa/criar", opcoes);
+			let response = await fetch("/api/pessoa/criar", opcoes);
 
-				if (response.ok) {
-					// Limpa os campos para facilitar a criação da próxima pessoa.
-					nome.value = "";
-					email.value = "";
-					num.value = "";
-					cpf.value = "";
-					end.value ="";
-					con.value = "";
-
-					alert("Pessoa criada com sucesso!");
-				} else {
-					alert("Erro ao criar a pessoa!");
-				}
-			} catch (ex) {
-				alert("Erro de rede: " + ex.message);
+			if (response.ok) {
+				// Limpa os campos para facilitar a criação da próxima pessoa.
+				resetForm(form);
+				alert("Pessoa criada com sucesso!");
+			} else {
+				alert("Erro ao criar a pessoa!");
 			}
-
 		} catch (ex) {
-			alert("Erro: " + ex.message);
+			alert("Erro de rede: " + ex.message);
 		}
 	}
-
-	buttonCriar.onclick = criarPessoa;
 
 </script>

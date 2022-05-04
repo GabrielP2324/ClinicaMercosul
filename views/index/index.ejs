@@ -23,13 +23,6 @@
 	// código da página no browser. ;)
 	let pessoas = <%- JSON.stringify(pessoas) %>;
 
-	let expressaoAMP = /\&/g, expressaoLT = /</g, expressaoGT = />/g;
-	function encode(x) {
-		// Muito, muito importante trocar os caracteres < e > por &lt; e &gt; porque
-		// se o dado da tabela tiver < >, o browser vai interpretar como uma tag HTML ;)
-		return (x ? x.replace(expressaoAMP, "&amp;").replace(expressaoLT, "&lt;").replace(expressaoGT, "&gt;") : "");
-	}
-
 	// Existe uma INFINIDADE de opções para configurar uma DataTable!!!
 	$("#tabela").DataTable({
 		// Ordena os registros inicialmente pela segunda coluna

@@ -14,6 +14,7 @@
 
 class PessoaApiRoute {
 	@app.http.post()
+	@app.route.formData()
 	public async criar(req: app.Request, res: app.Response) {
 		// Os dados enviados via POST ficam dentro de req.body
 		let paciente = req.body;
@@ -60,7 +61,11 @@ class PessoaApiRoute {
 			// Todas os comandos SQL devem ser executados aqui dentro do app.sql.connect().
 
 			// As interrogações serão substituídas pelos valores passados ao final, na ordem passada.
-			await sql.query("INSERT INTO cadastro_p (PaciNom, PaciNum, PaciCPF, PaciEnd, PaciEma, PaciCon) VALUES (?, ?, ?, ?, ?, ?)", [paciente.PaciNom, paciente.PaciNum, paciente.PaciCPF, paciente.PaciEnd, paciente.PaciEma, paciente.PaciCon]);
+			try {
+				await sql.query("INSERT INTO cadastro_p (PaciNom, PaciNum, PaciCPF, PaciEnd, PaciEma, PaciCon) VALUES (?, ?, ?, ?, ?, ?)", [paciente.PaciNom, paciente.PaciNum, paciente.PaciCPF, paciente.PaciEnd, paciente.PaciEma, paciente.PaciCon]);
+			} catch (ex: any) {
+				console.log(ex.message);
+			}
 
 		});
 
