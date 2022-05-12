@@ -14,6 +14,10 @@
 
 class IndexRoute {
 	public async index(req: app.Request, res: app.Response) {
+		res.render("index/index");
+	}
+
+	public async tabela(req: app.Request, res: app.Response) {
 		// Mais para frente iremos melhorar os tipos, para não usar any[] :)
 		let pessoas: any[];
 
@@ -29,7 +33,7 @@ class IndexRoute {
 			pessoas: pessoas
 		};
 
-		res.render("index/index", opcoes);
+		res.render("index/tabela", opcoes);
 	}
 
 	public async criarPessoa(req: app.Request, res: app.Response) {

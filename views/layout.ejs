@@ -1,12 +1,15 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title><%=((typeof titulo === "undefined" || !titulo) ? "Clínica Mercosul" : (titulo + " - Clínica Mercosul")) %></title>
+	<title>
+		<%=((typeof titulo==="undefined" || !titulo) ? "Clínica Mercosul" : (titulo + " - Clínica Mercosul" )) %>
+	</title>
 
 	<!--
 		Bootstrap 4
@@ -66,19 +69,112 @@
 	-->
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/localization/messages_pt_BR.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/localization/messages_pt_BR.min.js"></script>
 
 	<script src="/public/lib/jquery-mask/jquery.mask.min.js"></script>
 
 	<script src="/public/js/script.js"></script>
 </head>
+
 <body>
 
-	<div>
-		Barra
+	<div class="limitador">
+		<div class="fundoazul">
+			<p class="img"><img src="" width="120"></p>
+			<p class="img"><a class="link" target="_blank">Início
+				</a><a class="link" target="_blank">Especialidades
+				</a><a class="link" target="_blank">Profissionais
+				</a><a class="link" target="_blank">Contato
+				</a><a class="link" target="_blank">Marque sua consulta</a></p>
+			<div class="primeiraimagem">
+				<div class="limitador"></div>
+			</div>
+			<div class="container-fluid" id="sobrenos">
+				<div class="row">
+					<div class="col-sm-6"><img src="" width="300" /></div>
+					<div class="col-sm-6">
+						<h3 class="titulo">Sobre nós
+						</h3>
+						<h2 class="titulo2">"Sua preferência faz a nossa história"
+						</h2>
+						<p class="sobrenostexto">Desde 1996, cuidamos da saúde bucal de várias famílias, ouvindo com
+							atenção suas queixas e sonhos e tratando cada paciente como único. Nos mantemos atualizados
+							e equipados com os melhores e mais modernos equipamentos do mercado para oferecer sempre o
+							maior conforto possível e fazer da excelência no atendimento uma rotina. Vem sorrir com a
+							gente!
+						</p>
+						<h5 class="titulo3">Dr. Fernando Falchi
+						</h5>
+						<p>Responsável Técnico <br>CRO/SP. 49868</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<%- body %>
+
+		<div class="container-fluid fundoazulescuro">
+			<div class="row">
+				<div class="col-sm-3"><img src="" width="50" />
+					<p class="paragrafofinal">A Quality Sorriso é uma clínica Odontológica com profissionais experientes
+						e qualificados que há 10 anos prestam um serviço de excelência na cidade de Curitiba.
+					</p>
+					<a class="botaofinal" target="_blank" id="ola">Saiba mais</a>
+				</div>
+				<div class="col-sm-3">
+					<h3 class="tituloabaixo">Especialidades</h3>
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+				<div class="col-sm-3">
+					<h2 class="titulo4">Redes Sociais
+
+					</h2>
+					<h4 class="redessociais">Facebook
+					</h4>
+					<p class="foto"><a href="https://www.facebook.com/drfalchi" target="_blank"><img src=""
+								width="75" /></a></p>
+					<h4 class="redessociais">Instagram
+					</h4>
+					<p class="foto"><a href="https://www.instagram.com/drfalchi/?hl=en" target="_blank"><img src=""
+								width="75"></a></p>
+				</div>
+				<div class="col-sm-3">
+					<h3 class="tituloabaixo">Clínica Mercosul</h3>
+					<p class="paragrafofinal"><img src="" width="75" />
+						R. Caminho do Pilar, 606 -
+						Vila Gilda, Santo André - SP, 09190-000<br><a
+							href="https://www.google.com/maps/place/Centro+Odontol%C3%B3gico+Mercosul/@-23.6682687,-46.5366983,15z/data=!4m5!3m4!1s0x0:0x742453dac9de5b3a!8m2!3d-23.6682598!4d-46.5367055"
+							target="_blank">Maps
+						</a>
+					<h3 class="tituloabaixo">Telefones
+					</h3>
+					<p>
+						<img src="" width="75" />
+						<a href="https://wa.me/5511970486792?text=Gostaria%20de%20marcar%20uma%20consulta"
+							target="_blank"> + 55 (11) 97048-6792</a>
+					</p>
+					<p>
+						<img src="" width="30" /><a href="tel:551149902598"> +55 (11) 4990-2598</a>
+					</p>
+					</p>
+					<h3 class="tituloabaixo">E-mail</h3>
+					<p class="paragrafofinal">
+						<a
+							href="mailto:falchi@outlook.com?subject=Agendamento&body=Gostaria%20de%20agendar%20uma%20consulta.">falchi@outlook.com</a>
+					</p>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<%- body %>
-
 </body>
+
 </html>

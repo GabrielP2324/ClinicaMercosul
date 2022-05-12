@@ -1,0 +1,56 @@
+﻿<!--
+	O CSS está no head ;)
+-->
+
+<div class="container-fluid">
+	<h1>
+		Lista de pessoas cadastradas
+	</h1>
+	
+	<!--
+		O motivo do width: 100% ;)
+
+		https://datatables.net/examples/basic_init/flexible_width.html
+	-->
+	<table id="tabela" class="table table-flush table-striped table-hover" style="width: 100%;"></table>
+
+</div>
+
+<script type="text/javascript">
+
+	// Estamos transformando a lista de pessoas em uma string JSON
+	// para que o browser tenha acesso à lista original. Veja o
+	// código da página no browser. ;)
+	let pessoas = <%- JSON.stringify(pessoas) %>;
+
+	// Existe uma INFINIDADE de opções para configurar uma DataTable!!!
+	$("#tabela").DataTable({
+		// Ordena os registros inicialmente pela segunda coluna
+		order: [[1, "asc"]],
+
+		width: "100%",
+
+		language: {
+			// Traduções
+			// https://datatables.net/plug-ins/i18n/
+			// https://datatables.net/plug-ins/i18n/Portuguese-Brasil.html
+            url: "https://cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json"
+        },
+
+		// https://datatables.net/reference/option/deferRender
+		deferRender: true,
+		//olá mundo
+		// https://datatables.net/reference/option/columns
+		columns: [
+			{ title: "Id", type: "number", data: "PaciCod" },
+			{ title: "Nome", render: encode, data: "PaciNom" },
+			{ title: "Telefone", render: encode, data: "PaciNum" },
+			{ title: "CPF", render: encode, data: "PaciCPF" },
+			{ title: "Endereço", render: encode, data: "PaciEnd" },
+			{ title: "E-mail", render: encode, data: "PaciEma" },
+			{ title: "Convênio", render: encode, data: "PaciCon" }
+		],
+
+		data: pessoas
+	});
+</script>
