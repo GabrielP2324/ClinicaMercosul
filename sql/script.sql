@@ -8,8 +8,6 @@ CREATE TABLE IF NOT EXISTS `clinica`.`cadastro_p` (
   `PaciCod` INT NOT NULL AUTO_INCREMENT,
   `PaciNom` VARCHAR(40) NOT NULL,
   `PaciNum` VARCHAR(13) NOT NULL,
-  `PaciCPF` VARCHAR(11) NOT NULL,
-  `PaciEnd` VARCHAR(45) NOT NULL,
   `PaciEma` VARCHAR(45) NOT NULL,
   `PaciCon` VARCHAR(30) NULL,
   PRIMARY KEY (`PaciCod`));
