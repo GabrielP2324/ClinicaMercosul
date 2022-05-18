@@ -37,19 +37,7 @@ class PessoaApiRoute {
 			res.status(400);
 			res.json("Numero inválido");
 			return;
-		}
-
-		if (!paciente.PaciCPF) {
-			res.status(400);
-			res.json("CPF inválido");
-			return;
-		}
-
-		if (!paciente.PaciEnd) {
-			res.status(400);
-			res.json("Endereço inválido");
-			return;
-		}
+		}	
 		if (!paciente.PaciEma) {
 			res.status(400);
 			res.json("E-mail inválido");
@@ -62,7 +50,7 @@ class PessoaApiRoute {
 
 			// As interrogações serão substituídas pelos valores passados ao final, na ordem passada.
 			try {
-				await sql.query("INSERT INTO cadastro_p (PaciNom, PaciNum, PaciCPF, PaciEnd, PaciEma, PaciCon) VALUES (?, ?, ?, ?, ?, ?)", [paciente.PaciNom, paciente.PaciNum, paciente.PaciCPF, paciente.PaciEnd, paciente.PaciEma, paciente.PaciCon]);
+				await sql.query("INSERT INTO cadastro_p (PaciNom, PaciNum, PaciEma, PaciCon) VALUES (?, ?, ?, ?)", [paciente.PaciNom, paciente.PaciNum, paciente.PaciEma, paciente.PaciCon]);
 			} catch (ex: any) {
 				console.log(ex.message);
 			}

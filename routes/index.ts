@@ -25,7 +25,7 @@ class IndexRoute {
 
 			// Todas os comandos SQL devem ser executados aqui dentro do app.sql.connect().
 
-			pessoas = await sql.query("SELECT PaciCod, PaciNom, PaciNum, PaciCPF, PaciEnd, PaciEma, PaciCon FROM cadastro_p");
+			pessoas = await sql.query("SELECT PaciCod, PaciNom, PaciNum, PaciEma, PaciCon FROM cadastro_p");
 			
 		});
 
