@@ -1,3 +1,11 @@
+html, body {
+    font-size: 15px;
+}
+
+img {
+    max-width: 100%;
+}
+
 .fundoazul {
     background-color: #99D9D9;
 }
@@ -10,11 +18,19 @@
     display: inline-block;
     color: #ffffff;
     background-color: #51B6B6;
-    padding: 15px 25px;
+    padding: 1rem 1.5rem;
     border-radius: 5px;
     font-weight: bold;
-    margin-left: 20px;
     text-decoration: none;
+}
+
+.link + .link {
+    margin-left: 1rem;
+}
+
+.link.redondo {
+    background-color: #1096D4;
+    border-radius: 9999px;
 }
 
 .link:hover {
@@ -71,8 +87,7 @@
 }
 
 .imagemfundo {
-    background-color: #0044ff;
-    background-image: url("");
+    background-image: url("/public/images/imagem3fundo.png");
     background-size: 100%;
     background-repeat: no-repeat;
     padding: 40px 40px 10px;
@@ -84,7 +99,6 @@
 
 .card-missao {
     padding: 15px;
-    background-color: #0044ff;
     border-radius: 5px;
     min-height: 100%;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.75);
@@ -105,21 +119,16 @@
 
 .fundoazulescuro {
     background-color: #1F2128;
+    padding-top: 50px;
 }
 
-.botaofinal {
-    background-color: #1096D4;
-    color: #ffffff;
-    padding: 15px 25px;
-    border-radius: 90px;
-    font-weight: bold;
-    margin-left: 10px;
-    margin-top: 15px;
+.fundoazulescuro .fa {
+    color: #fff;
 }
 
 .paragrafofinal {
     color: #ffffff;
-    padding: 20px;
+    padding: 1rem;
 }
 
 .tituloabaixo {
@@ -139,5 +148,8 @@
 }
 
 .redessociais {
+    color: #ffffff;
+}
+.paragrafodeelementos {
     color: #ffffff;
 }
