@@ -22,15 +22,14 @@ img {
     border-radius: 5px;
     font-weight: bold;
     text-decoration: none;
-}
-
-.link + .link {
-    margin-left: 1rem;
+    border: 0px none transparent;
+    margin: 1rem;
+    vertical-align: middle;
 }
 
 .link.redondo {
     background-color: #1096D4;
-    border-radius: 9999px;
+    border-radius: 5px;
 }
 
 .link:hover {
@@ -152,4 +151,8 @@ img {
 }
 .paragrafodeelementos {
     color: #ffffff;
+}
+.ola {
+    margin-bottom: 3rem;
+    border-radius: 15px;
 }

@@ -1,28 +1,66 @@
-<form id="form">
-	<div class="form-group">
-		<label for="PaciNom">Nome</label>
-		<input class="form-control" type="text" id="PaciNom" name="PaciNom" maxlength="50" />
-	</div>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-PT">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<title>Título da Página</title>
+	
+	<style type="text/css">
+		.centro {
+		text-align: center;
+		color: #ffffff;	
+		margin-top: 30px;
+		margin-bottom: 30px;
+		}
+		.botao {
+		color: #1C3C51;
+		background-color: #99D9D9;
+		padding: 15px 25px;
+		border-radius: 10 px;
+		font-weight: bold ;
+		margin-top: 20px;
+		}
+		label {
+		display:block;
+		}
+		body {
+		background-color: #51B6B6 }
+		
+		
+		
+	</style>
+</head>
+<body>
+			<div class = "aviso"> 
+				<p>
+					
+				</p>
+			</div>
 
-	<div>
-		<label for="PaciNum">Numero de telefone</label>
-		<input type="text" id="PaciNum" name="PaciNum" maxlength="15" />
-	</div>
+			<div class = "centro">
+				<div >
+					<label for="PaciNom">Nome</label>
+					<input class="form-control" type="text" id="PaciNom" name="PaciNom" maxlength="50" />
+				</div>
+				<div >
+					<label for="PaciNum">Numero de telefone</label>
+					<input type="text" id="PaciNum" name="PaciNum" maxlength="15" />
+				</div>
+				<div>
+					<label for="PaciEma">E-mail</label>
+					<input type="email" id="PaciEma" name="PaciEma" maxlength="50" />
+				</div>
+				<div>
+					<label for="PaciCon">Convênio</label>
+					<input type="text" id="PaciCon" name="PaciCon" maxlength="50" />
+				</div>
+				<div>		
+					<button type="submit" class="botao">Criar Pessoa</button>
+				</div>
+			</div>
 
-	<div>
-		<label for="PaciEma">E-mail</label>
-		<input type="email" id="PaciEma" name="PaciEma" maxlength="50" />
-	</div>
 
-	<div>
-		<label for="PaciCon">Convênio</label>
-		<input type="text" id="PaciCon" name="PaciCon" maxlength="50" />
-	</div>
-
-	<div>
-		<button type="submit" class="btn btn-success">Criar Pessoa</button>
-	</div>
-</form>
 
 <script type="text/javascript">
 	maskMobilePhone("#PaciNum");
@@ -72,3 +110,5 @@
 	}
 
 </script>
+</body>
+</html>

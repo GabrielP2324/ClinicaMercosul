@@ -1,0 +1,142 @@
+﻿<form>
+	<div id="pai">
+		<section id="secao"></section>
+		<div class="centro">
+			<div >
+				<label for="PaciNom">Nome</label>
+				<input class="form-control batatinha" type="text" id="PaciNom" name="PaciNom" maxlength="50" />
+			</div>
+			<div >
+				<label for="PaciNum">Numero de telefone</label>
+				<input type="text" class="batatinha" id="PaciNum" name="PaciNum" maxlength="15" />
+			</div>
+			<div>
+				<label for="PaciEma">E-mail</label>
+				<input type="email" class="batatinha" id="PaciEma" name="PaciEma" maxlength="50" />
+			</div>
+			<div>
+				<label for="PaciCon">Convênio</label>
+				<input type="text" class="batatinha" id="PaciCon" name="PaciCon" maxlength="50" />
+			</div>
+			<div>		
+				<button type="submit" class="botao">Criar Pessoa</button>
+			</div>
+		</div>
+	</div>
+</form>
+
+<%- contentFor("styles") %>
+
+<style type="text/css">
+	.centro {
+		text-align: center;
+		color: #ffffff;	
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	.botao {
+		color: #1C3C51;
+		background-color: #99D9D9;
+		padding: 15px 25px;
+		border-radius: 5px;
+		font-weight: bold ;
+		margin-top: 20px;
+	}
+	label {
+		display:block;
+	}
+	body {
+		background-color: #51B6B6 
+		margin: 0px;
+		padding: 0px;
+	}
+	#pai {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		overflow: hidden;
+		padding: 20vh 50px 0;
+		box-sizing: border-box;
+	}
+	#secao {
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		top: 0;
+		width: 115vw;
+		height: 115vh;
+		background-image: url(/public/images/fundo3.jpg);
+		background-size: cover;
+		pointer-events: none;
+	}
+	.batatinha {
+		border-radius: 5px;
+	}
+</style>
+
+<%- contentFor("scripts") %>
+
+<script type="text/javascript">
+	var pai = document.getElementById("pai");
+	var secao = document.getElementById("secao");
+	
+	pai.onmousemove = function(e) {
+		
+		const rect = pai.getBoundingClientRect();
+		let x = e.clientX - rect.left;
+		let y = e.clientY - rect.top;
+		let px = x / rect.width;
+		let py = y / rect.height;
+		//console.log(px + " / " + py);
+		secao.style.left = (-15 * px) + "vw";
+		secao.style.top = (-15 * py) + "vh";
+		
+	};
+
+	maskMobilePhone("#PaciNum");
+
+	$("#form").validate({
+		rules: {
+			// Aqui o que vale é o name, não o id!
+			PaciNom: {
+				required: true
+			},
+			PaciNum: {
+				required: true,
+				minlength: 14
+			},
+			PaciEma: {
+				required: true
+			},
+			PaciCon: {
+				required: false
+			}
+		},
+
+		submitHandler: function (form) {
+			criarPessoa(form);
+		}
+	});
+
+	async function criarPessoa(form) {
+		try {
+			let opcoes = {
+				method: "POST",
+				body: new FormData(form)
+			};
+
+			let response = await fetch("/api/pessoa/criar", opcoes);
+
+			if (response.ok) {
+				// Limpa os campos para facilitar a criação da próxima pessoa.
+				resetForm(form);
+				Swal.success("Pessoa criada com sucesso!");
+			} else {
+				Swal.error("Erro ao criar a pessoa!");
+			}
+		} catch (ex) {
+			Swal.error("Erro de rede: " + ex.message);
+		}
+	}
+
+</script>
