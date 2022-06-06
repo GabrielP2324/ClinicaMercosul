@@ -87,7 +87,8 @@ img {
 
 .imagemfundo {
     background-image: url("/public/images/imagem3fundo.png");
-    background-size: 100%;
+    background-size: cover;
+    background-position: right top;
     background-repeat: no-repeat;
     padding: 40px 40px 10px;
 }
@@ -155,4 +156,27 @@ img {
 .ola {
     margin-bottom: 3rem;
     border-radius: 15px;
+}
+
+.dropdown-menu {
+    color: #ffffff;
+    background: #51B6B6;
+    border: 0px none transparent;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-item {
+    font-weight: bold;
+    color: #ffffff;
+    background: #51B6B6;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: rgba(255, 255, 255, 0.5);
+    background: #51B6B6;
+}
+
+.dropdown-item:active {
+    color: rgba(255, 255, 255, 0.25);
+    background: #51B6B6;
 }

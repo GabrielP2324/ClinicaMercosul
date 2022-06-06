@@ -5,32 +5,31 @@
 	</h1>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-4 o">
+			<div class="col-sm-4 o">
 				<div class="selfie"><img src="/public/images/fernando.jpg" class="border" /></div>
 				<h4 class="cl">
-					Dr Fernando Falchi <br>
-					CRO/SP 49868<br>
-					Especialista em DTM E dor orofacial<br> 
-					Especialista em ortodontia <br>
-					Especialista em Imolante<br>
-					Professor de estetica dos dentes no <br>
-					instituto Sially em São Paulo
+					Dr Fernando Falchi<br/>
+					CRO/SP 49868<br/>
+					Especialista em DTM e dor orofacial<br/>
+					Especialista em ortodontia<br/>
+					Especialista em Imolante<br/>
+					Professor de estetica dos dentes no instituto Sially em São Paulo
 				</h4>
 			</div>
-			<div class="col-md-4 o">
+			<div class="col-sm-4 o">
 				<div class="selfie"><img src="/public/images/renata.jpg" class="border" /></div>
 				<h4 class="cl">
-					Dra Renata Filadelfo <br>
-					CRO/SP  94801<br>
-					Especialista em Harmonizaçao Orofacial 
+					Dra Renata Filadelfo<br/>
+					CRO/SP  94801<br/>
+					Especialista em Harmonizaçao Orofacial<br/>
 					Especialista em Implantes
 				</h4>
 			</div>
-			<div class="col-md-4 o">
+			<div class="col-sm-4 o">
 				<div class="selfie"><img src="/public/images/marcelo.jpg" class="border" /></div>
 				<h4 class="cl">
-					Marcello Cheloti<br>
-					CRO/SP 72315<br>
+					Dr Marcello Cheloti<br/>
+					CRO/SP 72315<br/>
 					Cirurgia e traumatologia Buco maxilo facial
 				</h4>
 			</div>
@@ -62,13 +61,16 @@
 	}
 	.o{
 		text-align: center;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: start;
 	}
 	.selfie {
 		background-position: center bottom;
 		background-repeat: no-repeat;
 		background-size: contain;
 		width: 100%;
-		min-height: 360px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
@@ -81,8 +83,20 @@
 		background-color: #99D9D9;
 		color: #132540;
 		border-radius: 15px;
+		font-size: 1rem;
 		padding: 20px;
-		margin: -20px -20px 0 20px;
+		margin: -20px -20px 20px 20px;
+	}
+	.cordofundo {
+		padding: 80px 25px;
+	}
+	@media (min-width: 576px) {
+		.cordofundo {
+			padding: 80px 40px;
+		}
+		.selfie {
+			min-height: 370px;
+		}
 	}
 </style>
 
@@ -90,6 +104,8 @@
 <script type="text/javascript">
 	var pai = document.getElementById("pai");
 	var secao = document.getElementById("secao");
+	var selfies = document.getElementsByClassName("selfie");
+	var imagemMaior = selfies[0].firstElementChild;
 	
 	pai.onmousemove = function(e) {
 		
@@ -103,4 +119,23 @@
 		secao.style.top = (-15 * py) + "vh";
 		
 	};
+
+	function ajustarImagens() {
+		var i, m, rect;
+		if (window.innerWidth < 576) {
+			for (i = selfies.length - 1; i >= 0; i--) {
+				selfies[i].style.minHeight = "";
+			}
+		} else {
+			rect = imagemMaior.getBoundingClientRect();
+			m = (rect.bottom - rect.top + 5) + "px";
+			for (i = selfies.length - 1; i >= 0; i--) {
+				selfies[i].style.minHeight = m;
+			}
+		}
+	}
+
+	window.onresize = ajustarImagens;
+	window.onload = ajustarImagens;
+	ajustarImagens();
 </script>

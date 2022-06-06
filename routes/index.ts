@@ -29,6 +29,46 @@ class IndexRoute {
 		res.render("index/profissionais");
 	}
 
+	public async clinicageral(req: app.Request, res: app.Response) {
+		res.render("index/clinicageral");
+	}
+
+	public async implante(req: app.Request, res: app.Response) {
+		res.render("index/implante");
+	}
+
+	public async ortodontia(req: app.Request, res: app.Response) {
+		res.render("index/ortodontia");
+	}
+
+	public async endodontia(req: app.Request, res: app.Response) {
+		res.render("index/endodontia");
+	}
+
+	public async cirurgia(req: app.Request, res: app.Response) {
+		res.render("index/cirurgia");
+	}
+
+	public async disfuncaoatm(req: app.Request, res: app.Response) {
+		res.render("index/disfuncaoatm");
+	}
+
+	public async periodontia(req: app.Request, res: app.Response) {
+		res.render("index/periodontia");
+	}
+
+	public async harmonizacao(req: app.Request, res: app.Response) {
+		res.render("index/harmonizacao");
+	}
+
+	public async odontoestetica(req: app.Request, res: app.Response) {
+		res.render("index/odontoestetica");
+	}
+
+	public async protese(req: app.Request, res: app.Response) {
+		res.render("index/protese");
+	}
+
 	public async tabela(req: app.Request, res: app.Response) {
 		// Mais para frente iremos melhorar os tipos, para não usar any[] :)
 		let pessoas: any[];
