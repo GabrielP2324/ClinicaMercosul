@@ -69,7 +69,18 @@ class IndexRoute {
 		res.render("index/protese");
 	}
 
+	@app.http.all()
 	public async tabela(req: app.Request, res: app.Response) {
+		if (!req.body || !req.body.senha) {
+			res.render("index/senha", { erro: "" });
+			return;
+		}
+
+		if (req.body.senha !== process.env.senha) {
+			res.render("index/senha", { erro: "Senha inválida!" });
+			return;
+		}
+
 		// Mais para frente iremos melhorar os tipos, para não usar any[] :)
 		let pessoas: any[];
 

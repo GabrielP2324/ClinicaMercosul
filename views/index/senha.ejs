@@ -1,0 +1,104 @@
+﻿<form id="form" method="POST">
+	<div id="pai">
+		<section id="secao"></section>
+		<div class="row">
+			<div class="col-sm-6 offset-sm-3">
+				<div class="form-group">
+					<label for="senha">Senha</label>
+					<input class="form-control batatinha" type="password" id="senha" name="senha" />
+				</div>
+			</div>
+		</div>
+		<div class="text-center">
+			<button type="submit" class="botao">Acessar</button>
+		</div>
+	</div>
+</form>
+
+<%- contentFor("styles") %>
+
+<style type="text/css">
+	.centro {
+		text-align: center;
+		color: #ffffff;	
+		margin-top: 30px;
+		margin-bottom: 30px;
+		
+	}
+	label{
+		font-weight: bold;
+		text-align: center;
+		color: #ffffff;
+	}
+	.botao {
+		color: #1C3C51;
+		background-color: #99D9D9;
+		padding: 15px 25px;
+		border-radius: 5px;
+		font-weight: bold ;
+		margin-top: 20px;
+	}
+	label {
+		display:block;
+	}
+	body {
+		background-color: #51B6B6;
+		margin: 0px;
+		padding: 0px;
+	}
+	#pai {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		overflow: hidden;
+		padding: 20vh 50px 0;
+		box-sizing: border-box;
+	}
+	#secao {
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		top: 0;
+		width: 115vw;
+		height: 115vh;
+		background-image: url(/public/images/fundo3.jpg);
+		background-size: cover;
+		pointer-events: none;
+	}
+</style>
+
+<%- contentFor("scripts") %>
+
+<script type="text/javascript">
+	var erro = "<%= erro %>";
+	var pai = document.getElementById("pai");
+	var secao = document.getElementById("secao");
+	
+	pai.onmousemove = function(e) {
+		
+		const rect = pai.getBoundingClientRect();
+		let x = e.clientX - rect.left;
+		let y = e.clientY - rect.top;
+		let px = x / rect.width;
+		let py = y / rect.height;
+		//console.log(px + " / " + py);
+		secao.style.left = (-15 * px) + "vw";
+		secao.style.top = (-15 * py) + "vh";
+		
+	};
+
+	maskMobilePhone("#PaciNum");
+
+	$("#form").validate({
+		rules: {
+			// Aqui o que vale é o name, não o id!
+			senha: {
+				required: true
+			}
+		}
+	});
+
+	if (erro) {
+		Swal.fire("Oops...", erro, "error");
+	}
+</script>
